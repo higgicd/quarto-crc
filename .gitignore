@@ -1,4 +1,7 @@
-/.quarto/
-
-# Most annoying file ever
+.Rproj.user
+.Rhistory
 .DS_Store
+/.quarto
+/_book/
+
+

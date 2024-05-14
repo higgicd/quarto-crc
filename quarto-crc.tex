@@ -8,7 +8,6 @@
 ]{krantz}
 
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
@@ -18,6 +17,10 @@
   \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -236,10 +239,12 @@
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
 \makeatletter
-\@ifpackageloaded{tcolorbox}{}{\usepackage[many]{tcolorbox}}
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
 \makeatother
 \makeatletter
 \@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
+\makeatother
+\makeatletter
 \makeatother
 \makeatletter
 \makeatother
@@ -250,7 +255,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
-  pdftitle={Quarto CRC Book},
+  pdftitle={quarto-crc},
   pdfauthor={Jane Doe and Max Power},
   colorlinks=true,
   linkcolor={blue},
@@ -259,9 +264,9 @@
   urlcolor={Blue},
   pdfcreator={LaTeX via pandoc}}
 
-\title{Quarto CRC Book}
+\title{quarto-crc}
 \author{Jane Doe and Max Power}
-\date{11/22/22}
+\date{2024-05-14}
 
 \begin{document}
 \maketitle
@@ -280,7 +285,7 @@ To blah, blah, and blah.
 \setlength{\abovedisplayskip}{-5pt}
 \setlength{\abovedisplayshortskip}{-5pt}
 
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, interior hidden, borderline west={3pt}{0pt}{shadecolor}, boxrule=0pt, frame hidden, enhanced, breakable]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, frame hidden, breakable, sharp corners, enhanced]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -292,38 +297,23 @@ To blah, blah, and blah.
 
 \hypertarget{preface}{%
 \chapter*{Preface}\label{preface}}
-\addcontentsline{toc}{chapter}{Preface}
 
 \markboth{Preface}{Preface}
 
 This is a Quarto book.
 
-\hypertarget{software-conventions}{%
-\section*{Software conventions}\label{software-conventions}}
-\addcontentsline{toc}{section}{Software conventions}
-
-\markright{Software conventions}
+To learn more about Quarto books visit
+\url{https://quarto.org/docs/books}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\DecValTok{1} \OperatorTok{+} \DecValTok{1}
+\DecValTok{1} \SpecialCharTok{+} \DecValTok{1}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-2
+[1] 2
 \end{verbatim}
-
-To learn more about Quarto books visit
-\url{https://quarto.org/docs/books}.
-
-\hypertarget{acknowledgments}{%
-\section*{Acknowledgments}\label{acknowledgments}}
-\addcontentsline{toc}{section}{Acknowledgments}
-
-\markright{Acknowledgments}
-
-Blah, blah, blah\ldots{}
 
 \mainmatter
 
@@ -332,40 +322,40 @@ Blah, blah, blah\ldots{}
 \hypertarget{introduction}{%
 \chapter{Introduction}\label{introduction}}
 
-This is a book created from markdown\index{markdown} and executable
-code.
+This is a book created from markdown and executable code.
 
-Here's a basic plot:
+See Knuth (1984) for additional discussion of literate programming.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
-\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
-
-\NormalTok{r }\OperatorTok{=}\NormalTok{ np.arange(}\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{, }\FloatTok{0.01}\NormalTok{)}
-\NormalTok{theta }\OperatorTok{=} \DecValTok{2} \OperatorTok{*}\NormalTok{ np.pi }\OperatorTok{*}\NormalTok{ r}
-\NormalTok{fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(}
-\NormalTok{  subplot\_kw }\OperatorTok{=}\NormalTok{ \{}\StringTok{\textquotesingle{}projection\textquotesingle{}}\NormalTok{: }\StringTok{\textquotesingle{}polar\textquotesingle{}}\NormalTok{\} }
-\NormalTok{)}
-\NormalTok{ax.plot(theta, r)}
-\NormalTok{ax.set\_rticks([}\FloatTok{0.5}\NormalTok{, }\DecValTok{1}\NormalTok{, }\FloatTok{1.5}\NormalTok{, }\DecValTok{2}\NormalTok{])}
-\NormalTok{ax.grid(}\VariableTok{True}\NormalTok{)}
-\NormalTok{plt.show()}
+\DecValTok{1} \SpecialCharTok{+} \DecValTok{1}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\begin{verbatim}
+[1] 2
+\end{verbatim}
 
-{\centering \includegraphics{./intro_files/figure-pdf/fig-polar-output-1.pdf}
+\part{Topic of Part 1}
 
-}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+mollit anim id est laborum.
 
-\caption{\label{fig-polar}A line plot on a polar axis.}
+\hypertarget{sec-chapter}{%
+\chapter{Chapter Title}\label{sec-chapter}}
 
-\end{figure}
-
-See Knuth (1984) for additional discussion of literate
-programming\index{literate programming}.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+mollit anim id est laborum.
 
 \bookmarksetup{startatroot}
 
@@ -374,11 +364,20 @@ programming\index{literate programming}.
 
 In summary, this book has no content whatsoever.
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1} \SpecialCharTok{+} \DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 2
+\end{verbatim}
+
 \bookmarksetup{startatroot}
 
 \hypertarget{references}{%
 \chapter*{References}\label{references}}
-\addcontentsline{toc}{chapter}{References}
 
 \markboth{References}{References}
 

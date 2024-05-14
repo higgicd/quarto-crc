@@ -1,20 +1,11 @@
-# Preface {.unnumbered}
+# Preface {.unnumbered .unlisted}
 
 This is a Quarto book.
 
-
-## Software conventions {.unnumbered}
-
-```{python}
-1 + 1
-```
-
 To learn more about Quarto books visit <https://quarto.org/docs/books>.
 
-
-## Acknowledgments {.unnumbered}
-
-Blah, blah, blah...
-
+```{r}
+1 + 1
+```
 
 \mainmatter

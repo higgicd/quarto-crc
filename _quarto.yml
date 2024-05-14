@@ -2,14 +2,15 @@ project:
   type: book
 
 book:
-  title: "Quarto CRC Book"
-  output-file: "quarto-crc"
+  title: "quarto-crc"
   author: "Jane Doe and Max Power"
-  date: "11/22/2022"
-
+  date: "2024-05-14"
   chapters:
     - index.qmd
     - intro.qmd
+    - part: part_1.qmd
+      chapters: 
+        - chapter.qmd
     - summary.qmd
     - references.qmd
 
@@ -21,6 +22,10 @@ format:
   pdf:
     documentclass: krantz
     keep-tex: true
+    # cairo_pdf for embedded fonts
+    knitr:
+      opts_chunk:
+        dev: "cairo_pdf"
     include-in-header: latex/preamble.tex
     include-before-body: latex/before_body.tex
     include-after-body: latex/after_body.tex
